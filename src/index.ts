@@ -61,7 +61,7 @@ export default class Socket {
 
     conn() {
         this.io = new WebSocket(this.url);
-        // this.io.binaryType = this.option.binaryType;
+        this.io.binaryType = this.option.binaryType;
         this.id = uuid(32);
 
         // 绑定默认事件

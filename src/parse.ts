@@ -6,9 +6,6 @@ export function parse(message: any): any {
         case "string":
             return JSON.parse(message);
         case "object":
-            if (message instanceof ArrayBuffer) {
-                return parseArrayBuffer(message)
-            }
             if (message instanceof Blob) {
                 return parseBlob(message)
             }
@@ -19,19 +16,11 @@ export function parse(message: any): any {
     }
 }
 
-// 解析arrayBuffer数据
-function parseArrayBuffer(data: ArrayBuffer): any {
-    return data;
-}
-
 // 解析blob数据
 function parseBlob(data: Blob): any {
     let reader = new FileReader();
     reader.readAsArrayBuffer(data);
     reader.onload = function () {
-        if (reader.result instanceof ArrayBuffer) {
-            return parseArrayBuffer(reader.result)
-        }
         return changeDataKeys(reader.result);
     }
 }
