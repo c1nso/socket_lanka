@@ -41,7 +41,6 @@ import Socket from "socket_lanka"
                 // 	message_type: 0,
                 // 	release_time: 123123123123,
                 // });
-                // 发送注单信息
                 this.io.send({})
             },
             closeSto() {
